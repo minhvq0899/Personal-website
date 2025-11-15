@@ -38,7 +38,7 @@
       <div class="navbar-collapse collapse">
         <!-- Side bar -->
         <ul class="navbar-nav sidebar">
-          <li onclick="hideSidebar()">                    
+          <li>                    
             <a href="#" class="closeMenu">
               <i class="fa fa-times"></i>
             </a>
@@ -92,7 +92,7 @@
             <h4>A software engineer currently based in Seattle, WA</h4>
             <p>I was an undergrad at Clark University, double majoring in Computer Science and Economics and minoring in Data Science.</p>
             <p>A driven and impact-focused software engineer with ~3 years of experience developing large-scale distributed systems at Microsoft. Proven track record of leading major infrastructure initiatives and delivering critical deployment and end-to-end feature projects.</p>
-            <p><a role="button" class="btn btn-primary btn-lg">Download Printable Resume</a></p>
+            <p><a href="documents/Minh-Vu-Resume.pdf" download="Minh_Quang_Vu_Resume.pdf" class="btn btn-primary btn-lg">Download Printable Resume</a></p>
         </div>
         </div>     
       </div>    
@@ -299,23 +299,18 @@ Logistic Regression, Gradient Descent, K-means Clustering, SVM</p>
 
   <script type="text/javascript">
     function showSidebar() {
-      document.querySelector('.sidebar').style.display = 'flex';
-    }
-    function hideSidebar() {
-      document.querySelector('.sidebar').style.display = 'none';
+      document.querySelector('.sidebar').classList.toggle('active');
     }
   </script>
 
   <script type="text/javascript">
-    // ensure sidebar links auto-collapse the sidebar on click (useful on small screens)
+    // Hide sidebar when any sidebar link is clicked
     document.addEventListener('DOMContentLoaded', function () {
-      // Attach to each anchor inside the sidebar
       var sidebarLinks = document.querySelectorAll('.sidebar a');
       for (var i = 0; i < sidebarLinks.length; i++) {
         sidebarLinks[i].addEventListener('click', function () {
-          // hide the sidebar after a link is clicked
           var sb = document.querySelector('.sidebar');
-          if (sb) sb.style.display = 'none';
+          if (sb) sb.classList.remove('active');
         });
       }
     });

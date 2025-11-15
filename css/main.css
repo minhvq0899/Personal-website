@@ -199,7 +199,13 @@ header{
 .banner{
 	overflow:hidden ;
 	margin:0 auto !important;
-	/* background-image: url(../images/jhon-img.jpg); */
+	/* background-image: url(../images/header-image/galaxy.jpg); */
+	background-size: cover;           /* Ensures image covers the entire area */
+	background-repeat: no-repeat;     /* Prevents tiling */
+	background-position: center;      /* Centers the image */
+	width: 100%;
+	min-height: 100vh;                /* Optional: makes banner full screen */
+	display: flex;
 }
 .bannerText{
 	width:100%;
@@ -248,11 +254,12 @@ header{
 }
 /* Hover effect for navbar buttons */
 .navbar-nav > li > a:hover {
-  background-color: #3b6868 !important;
-  color: #1a1a1a !important;
-  border-radius: 4px;
-  box-shadow: 0 0 8px #00ffff;
+  background-color: #2f2f2f !important;
+  color: #f5f5f5 !important;
+  box-shadow: 0 0 0 transparent;
+  text-decoration: none !important;
 }
+
 .navbar-nav > li{
 	float: none;
 	display: inline-block;
@@ -370,9 +377,15 @@ header{
 	border-radius: 0;
 }
 .aboutus .btn-primary:hover {
-	color:#979497;
+	background-color: #2f2f2f;
+	line-height:30px;
+	font-size:12px;
+	color: #f5f5f5;                  /* Bright text */
+	letter-spacing:2px;
+	text-transform:uppercase;
+	font-weight:600;
+	border-radius: 0;
 }
-
 
 /*----------------------------------------------------
 	7. Work exp Style
@@ -454,6 +467,8 @@ header{
 		background-size: cover;
 		background-position: center center;
 		background-repeat: no-repeat; 
+		/* border-top: 2px solid black; */
+
 	}
 	.work-entry .col-md-12 {
 		padding: 20px;             /* Optional: adds spacing inside */
@@ -538,8 +553,7 @@ header{
 	font-size: 12px;
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	border-radius: 8px;
+	letter-spacing: 2px;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	box-shadow: 0 0 0 transparent;
@@ -749,7 +763,8 @@ header{
 	}
 	/* Use a more specific selector and !important so other generic li/display rules
 	   cannot accidentally override this on large screens. */
-	.navbar-nav .hamburgerIcon {
+	.navbar-nav .hamburgerIcon,
+	.sidebar {
 		display: none !important;
 	}
 }
@@ -765,6 +780,15 @@ header{
 	.hideMenu {
 		display: none !important;
 	}
+	
+	.sidebar {
+		display: none !important;
+	}
+
+	/* Show sidebar only when it has the active class */
+	.sidebar.active {
+		display: flex !important;
+	}
 
 	/* Make this explicit and higher priority so it shows on small screens */
 	.navbar-nav .hamburgerIcon {
@@ -773,16 +797,7 @@ header{
 		cursor: pointer;
 	}
 }
-/* Hide full navbar and show Side bar on phone screens */
-@media (max-width: 400px) {
-	.sidebar {
-		width: 100%;
-		top: 0;
-		right: 0;
-		height: 100vh;
-	}
-}
-
+/* Phone screen: Hide full navbar and show Side bar */
 @media screen and (max-width: 810px) {
 	body{
 		min-height:700px;
@@ -794,13 +809,9 @@ header{
 		font-size: 16px;
 	}
 	
-	.abc{
-		width:100%;
+	.navbar-collapse {
+		display: block !important;
 	}
-	.navArea {
-		float:none;
-	}
-
 }
 
 
@@ -810,6 +821,9 @@ header{
 	}
 	.conForm input.col-lg-6 {
 		width: 48.5%;
+	}
+	.navbar-collapse {
+		display: block !important;
 	}
 	.navbar-nav {
 		display: flex;
@@ -822,6 +836,9 @@ header{
 
 
 @media screen and (max-width: 767px) {
+	.navbar-collapse {
+		display: block !important;
+	}
 	.navbar-nav {
 		display: flex;
 		align-items: center;
@@ -829,7 +846,6 @@ header{
 		padding: 0;
 		margin: 0;
 	}
-	/* Hamburger visibility for small screens handled in the (max-width: 991px) block above. */
 }
 
 
@@ -842,6 +858,7 @@ header{
    at the end to override earlier per-section background declarations. */
 .banner,
 .workexperience,
-.contact {
-    background-color: inherit !important;
+.contact,
+.work-entry .col-md-12 {
+    background-color: var(--site-bg-color) !important;
 }
